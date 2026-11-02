@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ota-fleet-server
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/otafleet}
+    username: ${DATABASE_USER:otafleet}
+    password: ${DATABASE_PASSWORD:otafleet}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 4MB
+      max-request-size: 5MB
+  mvc:
+    problemdetails:
+      enabled: true
+
+ota-fleet:
+  admin-token: ${OTA_FLEET_ADMIN_TOKEN:}
+  storage-dir: ${OTA_FLEET_STORAGE_DIR:data/firmware}
+  # PEM da chave pública (texto) ou caminho para o arquivo .pem; vazio desliga a conferência no upload
+  signing-public-key: ${OTA_FLEET_SIGNING_PUBLIC_KEY:}
+  chunk-size: 16384
+  min-battery-percent: 25
+  max-download-retries: 3
+  rollout:
+    min-sample: 5
+    max-rollback-rate: 0.2
