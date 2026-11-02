@@ -1,0 +1,21 @@
+# chaves
+keys/
+*.pem
+!firmware/main/signing_key.pem
+
+# firmware
+firmware/sdkconfig
+firmware/sdkconfig.old
+firmware/build/
+
+# servidor
+server/data/
+server/target/
+
+# node
+node_modules/
+
+# editores e sistema
+.idea/
+.vscode/
+.DS_Store
