@@ -1,0 +1,17 @@
+{
+  "name": "ota-fleet-cli",
+  "version": "0.1.0",
+  "description": "Assina e publica firmware para o esp-ota-fleet",
+  "type": "module",
+  "bin": {
+    "ota-fleet": "src/cli.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "interop-fixture": "node scripts/interop-fixture.js"
+  },
+  "license": "MIT"
+}

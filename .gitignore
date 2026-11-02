@@ -2,6 +2,7 @@
 keys/
 *.pem
 !firmware/main/signing_key.pem
+!server/src/test/resources/interop/public.pem
 
 # firmware
 firmware/sdkconfig
