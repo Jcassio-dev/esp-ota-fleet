@@ -8,6 +8,10 @@ keys/
 firmware/sdkconfig
 firmware/sdkconfig.old
 firmware/build/
+firmware/build-*/
+firmware/dist/
+firmware/sdkconfig.local
+firmware/managed_components/
 
 # servidor
 server/data/

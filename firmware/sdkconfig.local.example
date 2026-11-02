@@ -1,0 +1,7 @@
+# Copie para sdkconfig.local (fica fora do git) e preencha.
+CONFIG_OTA_FLEET_WIFI_SSID="minha-rede"
+CONFIG_OTA_FLEET_WIFI_PASSWORD="minha-senha"
+# IP da máquina onde o servidor está rodando, visto pela rede do ESP32
+CONFIG_OTA_FLEET_SERVER_URL="http://192.168.0.10:8080"
+# Check-in mais frequente ajuda na demonstração
+CONFIG_OTA_FLEET_CHECKIN_INTERVAL_S=30

@@ -1,0 +1,50 @@
+menu "OTA Fleet"
+
+    config OTA_FLEET_WIFI_SSID
+        string "SSID do Wi-Fi"
+        default "minha-rede"
+
+    config OTA_FLEET_WIFI_PASSWORD
+        string "Senha do Wi-Fi"
+        default ""
+
+    config OTA_FLEET_SERVER_URL
+        string "URL do servidor"
+        default "http://192.168.0.10:8080"
+        help
+            Endereço base, sem barra no final. As rotas /api/... são acrescentadas.
+
+    config OTA_FLEET_CHECKIN_INTERVAL_S
+        int "Intervalo entre check-ins (segundos)"
+        range 10 86400
+        default 300
+
+    config OTA_FLEET_MIN_BATTERY
+        int "Bateria mínima para baixar uma atualização (%)"
+        range 0 100
+        default 25
+
+    config OTA_FLEET_SELF_TEST_TIMEOUT_S
+        int "Tempo máximo do autoteste da versão nova (segundos)"
+        range 10 600
+        default 60
+        help
+            Se a versão nova não passar no autoteste dentro desse tempo, ela é
+            marcada como inválida e o aparelho volta para a versão anterior.
+
+    config OTA_FLEET_LED_GPIO
+        int "GPIO do LED de status (-1 desliga)"
+        range -1 39
+        default 2
+        help
+            O LED pisca (MINOR + 1) vezes por ciclo, para ver na placa qual versão está rodando.
+
+    config OTA_FLEET_SIMULATE_BROKEN_BUILD
+        bool "Simular build quebrada (demonstração de rollback)"
+        default n
+        help
+            Quando esta versão sobe em teste depois de uma atualização, ela trava
+            antes de passar no autoteste. O bootloader volta para a versão anterior,
+            que avisa ROLLED_BACK ao servidor.
+
+endmenu

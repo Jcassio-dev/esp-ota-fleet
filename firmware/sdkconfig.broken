@@ -1,0 +1,2 @@
+# Camada usada só pelo build-versions.sh para gerar a versão que trava no autoteste.
+CONFIG_OTA_FLEET_SIMULATE_BROKEN_BUILD=y
