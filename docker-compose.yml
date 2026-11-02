@@ -1,0 +1,39 @@
+# Postgres + servidor. Antes de subir, gere as chaves:
+#   node cli/src/cli.js keygen --out keys/ --firmware firmware/main/signing_key.pem
+# O token de admin vem de OTA_FLEET_ADMIN_TOKEN (ou do arquivo .env).
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: otafleet
+      POSTGRES_USER: otafleet
+      POSTGRES_PASSWORD: otafleet
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U otafleet -d otafleet"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+  server:
+    build: ./server
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/otafleet
+      DATABASE_USER: otafleet
+      DATABASE_PASSWORD: otafleet
+      OTA_FLEET_ADMIN_TOKEN: ${OTA_FLEET_ADMIN_TOKEN:?defina OTA_FLEET_ADMIN_TOKEN}
+      OTA_FLEET_SIGNING_PUBLIC_KEY: /keys/public.pem
+    volumes:
+      - ./keys/public.pem:/keys/public.pem:ro
+      - firmware-data:/data/firmware
+
+volumes:
+  db-data:
+  firmware-data:

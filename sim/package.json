@@ -1,0 +1,13 @@
+{
+  "name": "ota-fleet-sim",
+  "version": "0.1.0",
+  "description": "Frota de aparelhos falsos que seguem o protocolo do esp-ota-fleet",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
