@@ -32,7 +32,7 @@ esp-ota-fleet/
 
 ## Como rodar
 
-Requisitos: Java 21, Maven, Node 20+ e Docker. Para o firmware, ESP-IDF v5.x.
+Requisitos: Java 21, Maven, Node 20+ e Docker. Para o firmware, ESP-IDF v5.x (testado com v5.5.6).
 
 ```bash
 # 1. chaves: a privada fica em keys/ (fora do git), a pública vai para o firmware
@@ -94,4 +94,4 @@ cd sim && npm test
 
 ## Status
 
-Servidor, CLI e simulador completos e testados. O firmware ainda não foi validado na placa.
+Servidor, CLI e simulador completos e testados, inclusive com `docker compose` (Postgres). O firmware compila com ESP-IDF v5.5 e os binários gerados passam pelo servidor e pelo simulador; falta validar na placa.
